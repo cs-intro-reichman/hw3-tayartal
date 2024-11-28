@@ -58,10 +58,18 @@ public class Algebra {
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
 		int times = x1;
-		int numberOfTimes = minus(x2, 1);
-		for(int i = 0 ; i < numberOfTimes; i++) {
-			  times = plus(times, x1);
+		if(x2 > 0) {
+			int numberOfTimes = minus(x2, 1);
+			for(int i = 0 ; i < numberOfTimes; i++) {
+				  times = plus(times, x1);
+			}
+		} else if (x2 < 0) {
+			int numberOfTimes = minus(-x2, 1);
+			for(int i = 0 ; i < numberOfTimes; i++) {
+				times = plus(times, x1);
+		  }
 		}
+		
 		return times;
 	}
 
