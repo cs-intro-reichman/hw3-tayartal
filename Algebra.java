@@ -25,43 +25,108 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int plus2num = x2;
+		if (x1 > 0) {	
+			for(int i = 0 ; i < x1 ; i++) {
+				plus2num++ ;  
+			}
+		} else if (x1 < 0){
+			for (int i = 0; i < -x1; i++) {
+				plus2num--;
+			}
+		}
+		return plus2num;
 	}
+
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int minus2num = x1;
+		if (x2 > 0) {
+			for(int i = 0 ; i < x2 ; i++) {
+				minus2num-- ;  
+			}
+		} else if (x2 < 0) {
+			for(int i = 0 ; i < -x2 ; i++) {
+				minus2num++ ;  
+			}
+		}
+		
+		return minus2num;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int times = x1;
+		if(x2 > 0) {
+			int numberOfTimes = minus(x2, 1);
+			for(int i = 0 ; i < numberOfTimes; i++) {
+				  times = plus(times, x1);
+			}
+		} else if (x2 < 0) {
+			int numberOfTimes = minus(-x2, 1);
+			for(int i = 0 ; i < numberOfTimes; i++) {
+				times = plus(times, x1);
+		  }
+		}
+		
+		return times;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int powNum = x ; 
+		int numberOfTimes = minus(n, 1);
+		for(int i = 0 ; i < numberOfTimes; i++) {
+			powNum = times(powNum, x);
+	  	}
+		if(n == 0){
+			powNum = 1 ; 
+		}
+		return powNum;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int divNum = 0;
+		int divIteration = x1;
+		while (divIteration >= x2) {
+			divIteration = minus(divIteration, x2);
+			divNum++;
+			
+		}
+		return divNum;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		int divN = div(x1, x2);
+		int timesNum = times(divN, x2);
+		int modNum = minus(x1, timesNum);
+
+		return modNum;
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		double start = 0;
+    	double end = x;
+    	double precision = 0.00001; 
+
+    	while (end - start > precision) {
+      		double mid = (start + end) / 2;
+      		double midSquare = mid * mid;
+
+      		if (Math.abs(midSquare - x) < precision) {
+        		return (int)mid;
+      		} else if (midSquare < x) {
+        		start = mid;
+      		} else {
+        		end = mid;
+      		}
+    	}
+
+    	return (int)((start + end) / 2);
+		
 	}	  	  
 }
