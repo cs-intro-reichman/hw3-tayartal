@@ -79,7 +79,10 @@ public class Algebra {
 		int numberOfTimes = minus(n, 1);
 		for(int i = 0 ; i < numberOfTimes; i++) {
 			powNum = times(powNum, x);
-	  }
+	  	}
+		if(n == 0){
+			powNum = 1 ; 
+		}
 		return powNum;
 	}
 
